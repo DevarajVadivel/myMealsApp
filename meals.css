@@ -1,0 +1,407 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  /* background-color: cadetblue; */
+  background-color: rgb(12, 43, 70);
+}
+
+header {
+  height: 55px;
+  width: 100%;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  /* padding: 10px; */
+}
+
+h1{
+  color: aliceblue;
+}
+
+h3 {
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 998;
+  cursor: pointer;
+}
+
+.navLinks {
+  display: flex;
+  /* gap: 20px; */
+  align-items: center;
+  /* align-self: flex-end; */
+}
+.navLinks h4 {
+  cursor: pointer;
+}
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---search---- */
+
+.search {
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchimg {
+  height: 100%;
+  width: 50%;
+}
+
+.searchContainer {
+  height: 75%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  color: aliceblue;
+  position: relative;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.wrapper {
+  /* height: 80%; */
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  /* border:1px solid black; */
+  /* justify-content: flex-end;     */
+}
+
+.searchInputContainer {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* background-color:aqua; */
+}
+
+.searchInput {
+  width: 60%;
+  height: 40px;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: none;
+  /* background-color: lightblue; */
+  border: 1px solid lightblue;
+}
+
+.searchInput:focus {
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(254, 253, 253, 0.724);
+  border-bottom-left-radius: 0px;
+  border: 1px solid black;
+}
+
+.buttonSearch {
+  width: 20%;
+  height: 40px;
+  padding: 10px;
+  font-weight: bold;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgb(5, 124, 128);
+  /* color: rgba(0, 0, 0, 0.644); */
+  color: aliceblue;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+.searchInput:focus + .buttonSearch {
+  border-bottom-right-radius: 0px;
+  cursor: pointer;
+}
+
+.suggestionBox {
+  height: 195px;
+  width: 80%;
+  overflow-y: scroll;
+  /* border: 1px solid white; */
+  /* padding: 20px; */
+  /* background-color: red; */
+  position: absolute;
+  top: 40px;
+}
+.suggestionBox::-webkit-scrollbar {
+  display: none;
+}
+
+li {
+  list-style: none;
+  padding: 10px;
+  background-color: grey;
+  border-bottom: 1px solid white;
+  /* margin: 10px; */
+  /* display: none; */
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+/* ------------------------------- */
+/* Home Page */
+
+.home-page {
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid black; */
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(12, 43, 70);
+}
+
+.home-page-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(12, 43, 70);
+  padding: 20px;
+  margin-top: 180px;
+}
+
+.card {
+  height: 300px;
+  width: 280px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  /* justify-content:space-between; */
+  transition: all 0.5s;
+}
+
+.card:hover {
+  transform: scale(110%);
+}
+
+.cardImage {
+  height: 85%;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.cardDetails {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.cardDetails:hover {
+  background-color: black;
+  color: aliceblue;
+}
+
+.cardDetails:hover .fa-heart {
+  color: aliceblue;
+  cursor: pointer;
+}
+.fa-heart {
+  color: grey;
+}
+
+.selected {
+  color: red;
+}
+
+.mealName {
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Display three dots (...) when text overflows */
+  width: 200px; /* Adjust the width as needed */
+  height: auto;
+  color: rgb(15, 134, 138);
+  /* display: inline-block; */
+  /* position: relative; */
+  transition: all 0.5s;
+  /* margin-top: 10px; */
+}
+
+.mealName:hover {
+  cursor: pointer;
+}
+
+.mealName::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+}
+
+.mealName:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* ========================================== */
+/* meals details page */
+
+.meal-detail-page {
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid black; */
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(1, 1, 1, 0.755);
+  position: fixed;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+.fa-xmark {
+  font-size: 2.5rem;
+  color: red;
+  align-self: flex-end;
+  margin-right: 120px;
+  cursor: pointer;
+}
+.modal,
+.modal {
+  height: 80%;
+  width: 80%;
+  background-color: aliceblue;
+}
+
+.mealCard {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.mealImage {
+  height: 100%;
+  width: 40%;
+}
+
+.mealDetails {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mealNameAndFavWrapper,
+.mealCategoryAndAreaWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.mealInstructions {
+  padding: 15px;
+  text-align: justify;
+  color: rgb(12, 43, 70);
+  font-family: sans-serif;
+  overflow-y: scroll;
+}
+.linksAndFav {
+  font-size: 1.3rem;
+}
+
+.fa-youtube {
+  color: red;
+  margin-left: 20px;
+}
+
+/* ======================== */
+/* favourites */
+
+.favourite-meals-page {
+  height: 100%;
+  width: 100%;
+}
+
+.favourite-page-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(12, 43, 70);
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.favourites {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.favourites:hover {
+  background-color: white;
+  border: 1px solid rgb(12, 43, 70);
+  color: rgb(12, 43, 70);
+}
+
+.emptyFav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

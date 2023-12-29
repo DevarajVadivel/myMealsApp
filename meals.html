@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>myMeals</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      src="https://kit.fontawesome.com/7c8b7539c1.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="meals.css" />
+  </head>
+
+  <body>
+    <main>
+      <section class="search">
+        <header style="background-color: rgb(12, 43, 70); color: aliceblue  ;">
+          <!-- Add header content here -->
+          <h3>myMeals</h3>
+          <div class="navLinks">
+            <!-- <h4 class="home hide">Home</h4> -->
+            <h4 class="favourites">My Favourite Meals</h4>
+          </div>
+        </header>
+        <img src="./assets/Recipe.png" class="searchimg" />
+        <div class="searchContainer">
+          <div class="textContainer">
+            <h2>Welcome to myMeals App!</h2>
+            <p>explore more meals and make more dishes</p>
+          </div>
+          <div class="wrapper">
+            <div class="searchInputContainer">
+              <input
+                class="searchInput"
+                type="search"
+                placeholder="Search your favourite Meal Category"
+                autocomplete="off"
+              />
+              <button class="buttonSearch">Search</button>
+            </div>
+            <div class="suggestionBox">
+              <!-- <li>beef</li>
+                <li>Mutton</li>
+                <li>Chicken</li>
+                <li>Fish</li>
+                <li>Pork</li>
+                <li>beef</li> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-page hide">
+        <header>
+          <!-- Add header content here -->
+          <h3 class="homeScreen">myMeals</h3>
+          <div class="navLinks" style="width: 50%">
+            <div class="wrapper">
+              <div class="searchInputContainer">
+                <input
+                  class="searchInput"
+                  type="search"
+                  placeholder="Search your favourite Meal Category"
+                  autocomplete="off"
+                />
+                <button class="buttonSearch">Search</button>
+              </div>
+              <div class="suggestionBox">
+                <!-- <li>beef</li>
+                  <li>Mutton</li>
+                  <li>Chicken</li>
+                  <li>Fish</li>
+                  <li>Pork</li>
+                  <li>beef</li> -->
+              </div>
+            </div>
+            <h4 class="home hide">Home</h4>
+            <h4 class="favourites">Favourites</h4>
+          </div>
+        </header>
+        <div class="home-page-content"></div>
+      </section>
+
+      <section class="meal-detail-page hide">
+        <!-- Meal Detail Page content -->
+        <i class="fa-solid fa-xmark"></i>
+        <div class="modal"></div>
+      </section>
+
+      <section class="favourite-meals-page hide">
+        <header>
+          <!-- Add header content here -->
+          <h3>myMeals</h3>
+          <div class="navLinks">
+            <h4 class="home">Home</h4>
+            <!-- <h4 class="favourites">Favourites</h4> -->
+          </div>
+        </header>
+        <!-- My Favourite Meals Page content -->
+
+        <div class="favourite-page-content"></div>
+      </section>
+    </main>
+
+    <script src="meals.js" async defer></script>
+  </body>
+</html>
