@@ -124,23 +124,31 @@ let list = "";
 function showMealsList() {
   list = "";
   console.log("list is empty", list);
+  let localStoargeItems = JSON.parse(localStorage.getItem("favItemList"));
   // console.log("MealsListArraydd",MealsListArray);
   MealsListArray.forEach((data) => {
-    list += `<div class="card" >
-  <img src=${data.strMealThumb} class="cardImage" onclick="meal(${
-      data.idMeal
-    })">
-  <div class="cardDetails">
-    <h3 class="mealName" onclick="meal(${data.idMeal})">${data.strMeal}</h3>
-    <i class="fa-solid fa-heart" onclick='addToFav(this,${JSON.stringify(
-      data.idMeal
-    )})'></i>
-  </div>
- 
-</div>`;
+    localStoargeItems.forEach((lsdata) => {
+      if (data.idMeal == lsdata.idMeal) {
+        data.selected = true;
+      }
+    });
   });
 
-  homePageContent.innerHTML = list;
+  //   list += `<div class="card" >
+  //   <img src=${data.strMealThumb} class="cardImage" onclick="meal(${
+  //       data.idMeal
+  //     })">
+  //   <div class="cardDetails">
+  //     <h3 class="mealName" onclick="meal(${data.idMeal})">${data.strMeal}</h3>
+  //     <i class="fa-solid fa-heart" onclick='addToFav(this,${JSON.stringify(
+  //       data.idMeal
+  //     )})'></i>
+  //   </div>
+
+  // </div>`;
+
+  // homePageContent.innerHTML = list;
+  updateMealsList();
 }
 
 function updateMealsList() {
@@ -336,9 +344,13 @@ function listFavs() {
     favouritePageContent.innerHTML = list2;
   } else {
 
-    favouritePageContent.innerHTML = `
-    <img src="./assets/fav.png" height="70%" width="70%">
-    <h1> Uh-oh! It seems our favorites are on vacation. Time to bring them back with a bang!</h1>`;
+      favouritePageContent.style.marginTop = "0px";
+      favouritePageContent.innerHTML = `
+    <div class="emptyFav">
+    <img src="./assets/fav.png" height="50%" width="40%" >
+    <h1> Uh-oh! It seems your favorites are on vacation. Time to bring them back with a bang!</h1>
+    </div>
+    `;
   }
 }
 console.log("Fav array", favourites);
@@ -371,14 +383,13 @@ for (let index = 0; index < favouritesButton.length; index++) {
     if (favourites && favourites.length > 0) {
       listFavs();
     } else {
-    
-    favouritePageContent.innerHTML = `
+      favouritePageContent.style.marginTop = "0px";
+      favouritePageContent.innerHTML = `
     <div class="emptyFav">
     <img src="./assets/fav.png" height="50%" width="40%" >
     <h1> Uh-oh! It seems your favorites are on vacation. Time to bring them back with a bang!</h1>
     </div>
     `;
-    
     }
   });
 }
