@@ -9,7 +9,6 @@
 body {
   height: 100vh;
   width: 100%;
-  /* background-color: cadetblue; */
   background-color: rgb(12, 43, 70);
 }
 
@@ -23,7 +22,6 @@ header {
   padding: 20px;
   position: fixed;
   top: 0;
-  /* padding: 10px; */
 }
 
 h1 {
@@ -39,10 +37,9 @@ h3 {
 
 .navLinks {
   display: flex;
-  /* gap: 20px; */
   align-items: center;
-  /* align-self: flex-end; */
 }
+
 .navLinks h4 {
   cursor: pointer;
 }
@@ -59,7 +56,6 @@ main {
 .search {
   height: 100%;
   width: 100%;
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,14 +91,11 @@ h2 {
 }
 
 .wrapper {
-  /* height: 80%; */
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  /* border:1px solid black; */
-  /* justify-content: flex-end;     */
 }
 
 .searchInputContainer {
@@ -110,7 +103,6 @@ h2 {
   width: 100%;
   display: flex;
   justify-content: center;
-  /* background-color:aqua; */
 }
 
 .searchInput {
@@ -120,7 +112,6 @@ h2 {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border: none;
-  /* background-color: lightblue; */
   border: 1px solid lightblue;
 }
 
@@ -140,7 +131,6 @@ h2 {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: rgb(5, 124, 128);
-  /* color: rgba(0, 0, 0, 0.644); */
   color: aliceblue;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
@@ -155,9 +145,6 @@ h2 {
   height: 195px;
   width: 80%;
   overflow-y: scroll;
-  /* border: 1px solid white; */
-  /* padding: 20px; */
-  /* background-color: red; */
   position: absolute;
   top: 40px;
 }
@@ -170,8 +157,6 @@ li {
   padding: 10px;
   background-color: grey;
   border-bottom: 1px solid white;
-  /* margin: 10px; */
-  /* display: none; */
 }
 
 .hide {
@@ -188,8 +173,6 @@ li {
 .home-page {
   height: 100%;
   width: 100%;
-  /* border: 1px solid black; */
-  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -217,7 +200,6 @@ li {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  /* justify-content:space-between; */
   transition: all 0.5s;
 }
 
@@ -262,10 +244,7 @@ li {
   width: 200px; /* Adjust the width as needed */
   height: auto;
   color: rgb(15, 134, 138);
-  /* display: inline-block; */
-  /* position: relative; */
   transition: all 0.5s;
-  /* margin-top: 10px; */
 }
 
 .mealName:hover {
@@ -296,8 +275,6 @@ li {
 .meal-detail-page {
   height: 100%;
   width: 100%;
-  /* border: 1px solid black; */
-  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -370,10 +347,9 @@ li {
   height: 100%;
   width: 100%;
   flex-direction: column;
-
 }
 
-.favWrapper{
+.favWrapper {
   /* height: 100%; */
   width: 100%;
   display: flex;
@@ -382,8 +358,6 @@ li {
   background-color: rgb(12, 43, 70);
   padding: 10px;
   margin-top: 70px;
- 
- 
 }
 
 .favourite-page-content {
@@ -395,14 +369,12 @@ li {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(12, 43, 70);
-  
 }
 .favourite-page-content::-webkit-scrollbar {
   display: none;
 }
 
-
-@media screen and (max-width:620px) {
+@media screen and (max-width: 620px) {
   .card {
     height: 300px;
     width: 80%;
@@ -420,12 +392,9 @@ li {
     padding: 10px;
     margin-top: 70px;
   }
-
-
 }
 
-
-@media screen and (min-width:625px) {
+@media screen and (min-width: 625px) {
   /* .card {
     height: 300px;
     width: 40%;
@@ -443,60 +412,7 @@ li {
     padding: 10px;
     margin-top: 70px;
   }
-
-
 }
-
-
-/* 
-@media screen and (min-width:1000px) {
-  .card {
-    height: 300px;
-    width: 30%;
-  }
-
-  .favourite-page-content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: rgb(12, 43, 70);
-    padding: 10px;
-    overflow-y: scroll;
-    margin-top: 70px;
-  }
-
-
-}
-
-
-
-@media screen and (min-width:1200px) {
-  .card {
-    height: 300px;
-    width: 31%;
-  }
-
-  .favourite-page-content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: rgb(12, 43, 70);
-    padding: 10px;
-    overflow-y: scroll;
-    margin-top: 70px;
-  }
-
-
-} */
-
 
 .favourites {
   cursor: pointer;

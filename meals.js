@@ -1,6 +1,5 @@
 let categoriesMealsArray = [];
 let MealsListArray = [];
-// let mealsData;
 
 const fetchMealsCategory = async function () {
   try {
@@ -9,25 +8,23 @@ const fetchMealsCategory = async function () {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
-        // console.log(data.categories);
         data.categories.map((datas) => {
           categoriesMealsArray.push(
             datas.strCategory.toString().toLocaleLowerCase()
           );
-          //   console.log(datas);
         });
-        console.log("array", categoriesMealsArray);
       });
   } catch (error) {
     console.log("fetchMealsCategory api catch error", error);
   }
 };
 
+//To get meals category list, This function is called initally once webpage loaded.
 fetchMealsCategory();
 
 // --------------------------------------------------------------//
 
+//To get meal list of particular category which user searched for!
 const fetchMeals = async function (mealCategory) {
   try {
     await fetch(
@@ -38,15 +35,12 @@ const fetchMeals = async function (mealCategory) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        console.log("meals fetch successfull");
         MealsListArray = [];
         data.meals.forEach((meal) => {
           meal.selected = false;
           MealsListArray.push(meal);
         });
 
-        // MealsListArray.push(...data.meals);
         showMealsList();
       });
   } catch (error) {
@@ -54,13 +48,29 @@ const fetchMeals = async function (mealCategory) {
   }
 };
 
-// ---------------------//
+let list = "";
+function showMealsList() {
+  list = "";
+  console.log("list is empty", list);
+  let localStoargeItems = JSON.parse(localStorage.getItem("favItemList"));
+  // console.log("MealsListArraydd",MealsListArray);
+  MealsListArray.forEach((data) => {
+    localStoargeItems.forEach((lsdata) => {
+      if (data.idMeal == lsdata.idMeal) {
+        data.selected = true;
+      }
+    });
+  });
+
+  updateMealsList();
+}
 
 let searchInput = document.getElementsByClassName("searchInput");
 let suggestionBox = document.getElementsByClassName("suggestionBox");
 let listArray = [];
 let searchInputValue;
 
+// Based on the user input, We filter the category from mealcategory list array and list it as search results.
 for (let i = 0; i < searchInput.length; i++) {
   searchInput[i].addEventListener("input", function () {
     suggestionBox[i].innerHTML = "";
@@ -69,29 +79,20 @@ for (let i = 0; i < searchInput.length; i++) {
         searchInput[i].value.toLocaleLowerCase() != "" &&
         data.includes(searchInput[i].value.toLocaleLowerCase())
       ) {
-        // console.log(data.includes(searchInput.value.toLocaleLowerCase()));
-        // console.log(data);
         let list = document.createElement("li");
         list.innerText = data;
-        // console.log("list", list);
 
         list.addEventListener("click", function (e) {
-          console.log(e.currentTarget.value);
-          console.log("enathu ithu", e.currentTarget.innerText);
           searchInput[i].value = e.currentTarget.innerText;
           searchInputValue = e.currentTarget.innerText;
           suggestionBox[i].innerHTML = "";
         });
 
-        // suggestionBox.innerHTML = list;
-        // suggestionBox.append(list);
         suggestionBox[i].appendChild(list);
       }
     });
   });
 }
-
-// ====================//
 
 let buttonSearch = document.getElementsByClassName("buttonSearch");
 let homepage = document.getElementsByClassName("home-page")[0];
@@ -120,40 +121,12 @@ for (let j = 0; j < buttonSearch.length; j++) {
   });
 }
 
-let list = "";
-function showMealsList() {
-  list = "";
-  console.log("list is empty", list);
-  let localStoargeItems = JSON.parse(localStorage.getItem("favItemList"));
-  // console.log("MealsListArraydd",MealsListArray);
-  MealsListArray.forEach((data) => {
-    localStoargeItems.forEach((lsdata) => {
-      if (data.idMeal == lsdata.idMeal) {
-        data.selected = true;
-      }
-    });
-  });
-
-  //   list += `<div class="card" >
-  //   <img src=${data.strMealThumb} class="cardImage" onclick="meal(${
-  //       data.idMeal
-  //     })">
-  //   <div class="cardDetails">
-  //     <h3 class="mealName" onclick="meal(${data.idMeal})">${data.strMeal}</h3>
-  //     <i class="fa-solid fa-heart" onclick='addToFav(this,${JSON.stringify(
-  //       data.idMeal
-  //     )})'></i>
-  //   </div>
-
-  // </div>`;
-
-  // homePageContent.innerHTML = list;
-  updateMealsList();
-}
-
+//whenever we remove a meal from favourite list, we will update the same in Home Page.
+//Also, we'll use this function to show  meals list in home page for initial loading as well to make sure favourite meals
+//are in red colour in fav icon.
 function updateMealsList() {
   list = "";
-  console.log("update funv");
+
   MealsListArray.forEach((data) => {
     if (data.selected == true) {
       list += `<div class="card" >
@@ -191,8 +164,8 @@ function updateMealsList() {
 }
 
 // ================================================//
-// meal details Page
 
+// This function brings the details of user selected meal
 async function meal(mealId) {
   console.log("mealId", mealId);
   // alert("meal id",mealId);
@@ -205,7 +178,6 @@ async function meal(mealId) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("meals details from API", data);
         showMeal(data);
       });
   } catch (error) {
@@ -215,8 +187,9 @@ async function meal(mealId) {
 
 let mealsDetailsPage = document.getElementsByClassName("meal-detail-page")[0];
 let modal = document.getElementsByClassName("modal")[0];
-
 let list1;
+
+// This function displays the results of meal function like a modal.
 function showMeal(mealDetails) {
   mealsDetailsPage.classList.remove("hide");
   mealsDetailsPage.classList.add("show");
@@ -251,10 +224,10 @@ function showMeal(mealDetails) {
 
 let closeIcon = document.getElementsByClassName("fa-xmark")[0];
 
+//this event close the modal when click event is triggered.
 closeIcon.addEventListener("click", function () {
   mealsDetailsPage.classList.remove("show");
   mealsDetailsPage.classList.add("hide");
-  updateMealsList();
 });
 
 // ===================================//
@@ -264,9 +237,6 @@ let heartButton = document.getElementsByClassName("fa-heart");
 let checkDuplicate = false;
 
 function addToFav(currentIcon, mealId) {
-  console.log("meal added", mealId);
-  // mealObj.selected = true;
-
   //After refreshing, Updating the favourites array to have sync with local storage.
   favourites = JSON.parse(localStorage.getItem("favItemList"));
   let meal;
@@ -321,14 +291,12 @@ function removeFromFav(mealID) {
 }
 
 let localStorageFavList;
+// This function lists the favourite meals in Favourite page
 function listFavs() {
   list2 = "";
   favouritePageContent.innerHTML = "";
   localStorageFavList = JSON.parse(localStorage.getItem("favItemList"));
-  console.log(
-    "localStorageFavList",
-    JSON.parse(localStorage.getItem("favItemList"))
-  );
+
   if (localStorageFavList.length > 0) {
     localStorageFavList.forEach((data) => {
       list2 += `<div class="card">
@@ -343,9 +311,8 @@ function listFavs() {
 
     favouritePageContent.innerHTML = list2;
   } else {
-
-      favouritePageContent.style.marginTop = "0px";
-      favouritePageContent.innerHTML = `
+    favouritePageContent.style.marginTop = "0px";
+    favouritePageContent.innerHTML = `
     <div class="emptyFav">
     <img src="./assets/fav.png" height="50%" width="40%" >
     <h1> Uh-oh! It seems your favorites are on vacation. Time to bring them back with a bang!</h1>
@@ -353,7 +320,6 @@ function listFavs() {
     `;
   }
 }
-console.log("Fav array", favourites);
 
 let favouritePage = document.getElementsByClassName("favourite-meals-page")[0];
 let favouritePageContent = document.getElementsByClassName(
@@ -397,7 +363,7 @@ for (let index = 0; index < favouritesButton.length; index++) {
 // ========================//
 
 let home = document.getElementsByClassName("home");
-//  searchPage = document.getElementsByClassName("search")[0];
+
 for (let index = 0; index < home.length; index++) {
   home[index].addEventListener("click", function () {
     if (flag) {
